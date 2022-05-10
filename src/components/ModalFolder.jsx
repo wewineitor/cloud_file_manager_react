@@ -13,23 +13,23 @@ import {
     Input,
 } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
-import useUploadFile from '../hooks/useUploadFile'
+import useCreateFolder from '../hooks/useCreateFolder'
 
-const ModalFile = ({ isOpen, onClose }) => {
+const ModalFolder = ({ isOpen, onClose }) => {
     const {path} = useParams()
-    const uploadFile = useUploadFile(path)
+    const createFolder = useCreateFolder(path)
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
-            <form encType="multipart/form-data" method='post' onSubmit={uploadFile}>
+            <form method='post' onSubmit={createFolder}>
                 <ModalHeader>Upload File</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                     <Flex direction='column'>
                             <FormControl>
-                                <FormLabel htmlFor='email'>File</FormLabel>
-                                <Input id='file' name='upload_file' type='file'/>
+                                <FormLabel htmlFor='email'>Folder</FormLabel>
+                                <Input name='new_folder'/>
                             </FormControl>
                     </Flex>
                 </ModalBody>
@@ -37,7 +37,7 @@ const ModalFile = ({ isOpen, onClose }) => {
                     <Button colorScheme='red' mr={3} onClick={onClose}>
                         Close
                     </Button>
-                    <Button colorScheme='messenger' type='submit'>Upload</Button>
+                    <Button colorScheme='messenger' type='submit'>Create</Button>
                 </ModalFooter>
                 </form>
             </ModalContent>
@@ -45,4 +45,4 @@ const ModalFile = ({ isOpen, onClose }) => {
     )
 }
 
-export default ModalFile
+export default ModalFolder
