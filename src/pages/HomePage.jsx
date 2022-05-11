@@ -65,7 +65,8 @@ const HomePage = () => {
                         borderRadius='5px'
                         marginTop='5%'>
                         <Flex>
-                        <FontAwesomeIcon icon={ file.name.indexOf('.') === -1 ? faFolder : faFile} /> {file.name} {file.size !== 0 ? ` - ${file.size} KB` : null}
+                            <FontAwesomeIcon fontSize={35} icon={ file.name.indexOf('.') === -1 ? faFolder : faFile} />
+                            <Text fontSize='2xl'>{file.name} {file.size !== 0 ? ` - ${file.size} KB` : null}</Text>
                         </Flex>
                     </Box>
                 )) : <Text fontSize='5xl'>No files found</Text>
